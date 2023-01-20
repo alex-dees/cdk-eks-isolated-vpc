@@ -22,6 +22,10 @@ export class VpcStack extends cdk.Stack {
             }
           });
         
+        this.vpc.isolatedSubnets.forEach(s => cdk.Tags.of(s).add(
+          'kubernetes.io/role/internal-elb',
+          '1'));
+
         const sg = new ec2.SecurityGroup(this, 'VpceSg', { vpc: this.vpc });
         sg.addIngressRule(ec2.Peer.ipv4(this.vpc.vpcCidrBlock), ec2.Port.tcp(443));
     

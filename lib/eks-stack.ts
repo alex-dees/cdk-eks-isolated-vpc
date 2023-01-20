@@ -4,7 +4,7 @@ import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as eks from 'aws-cdk-lib/aws-eks';
 
 export interface EksStackProps extends cdk.StackProps{
-  vpc: ec2.Vpc
+  vpc: ec2.IVpc
 }
 
 export class EksStack extends cdk.Stack {
