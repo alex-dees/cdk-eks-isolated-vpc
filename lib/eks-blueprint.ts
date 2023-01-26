@@ -11,7 +11,8 @@ export class EksBlueprint{
       vpc: vpc,
       version: eks.KubernetesVersion.V1_23,
       placeClusterHandlerInVpc: true,
-      kubectlEnvironment: { 
+      kubectlEnvironment: {
+        // use vpc endpoint, not the global
         "AWS_STS_REGIONAL_ENDPOINTS": 'regional' 
       },
       endpointAccess: eks.EndpointAccess.PRIVATE,
